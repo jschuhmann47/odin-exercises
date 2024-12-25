@@ -1,0 +1,14 @@
+
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color:antiquewhite;
+}
+
+.dessert-img {
+    height: auto;
+    width: 500px;
+}
+
+h1, h2 {
+    color:chocolate
+}
