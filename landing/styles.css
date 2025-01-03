@@ -1,0 +1,12 @@
+* {
+    font-family: "Roboto", serif;
+}
+
+.main-info, .footer {
+    background-color: #1f2937;
+    color: white;
+}
+
+.quote {
+    background-color: #e5e7eb;
+}
