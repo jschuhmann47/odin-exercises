@@ -18,13 +18,12 @@
 }
 
 .header-img, .header-links {
+    display: flex;
     flex: 1;
+    justify-content: center;
     padding-left: 5%;
     padding-right: 5%;
-}
 
-.header-img {
-    width: 40px;
 }
 
 .header-link {
