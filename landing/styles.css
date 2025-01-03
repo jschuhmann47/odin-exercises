@@ -10,3 +10,24 @@
 .quote {
     background-color: #e5e7eb;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.header-img, .header-links {
+    flex: 1;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.header-img {
+    width: 40px;
+}
+
+.header-link {
+    padding-left: 15px;
+    padding-right: 15px; 
+}
