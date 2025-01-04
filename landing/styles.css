@@ -1,36 +1,47 @@
 * {
-    font-family: "Roboto", serif;
+  font-family: "Roboto", serif;
 }
 
-html, body {
-    margin: 0;
-}  
+html,
+body {
+  margin: 0;
+}
 
-.main-info, .footer {
-    background-color: #1f2937;
-    color: white;
+.main-info,
+.footer {
+  background-color: #1f2937;
+  color: white;
 }
 
 .quote {
-    background-color: #e5e7eb;
+  background-color: #e5e7eb;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    height: 50px;
+  display: flex;
+  align-items: center;
+  height: 50px;
 }
 
-.header-img, .header-links {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    padding-left: 5%;
-    padding-right: 5%;
-
+.header-img,
+.header-links {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .header-link {
-    padding-left: 15px;
-    padding-right: 15px; 
+  padding-left: 15px;
+  padding-right: 15px;
+  color: inherit;
+  text-decoration: inherit;
+  color: #e5e7eb;
+}
+
+.header-img {
+    color: #f9faf8;
+    font-size: 24px;
+    font-weight: bold;
 }
