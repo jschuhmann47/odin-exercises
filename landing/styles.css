@@ -2,6 +2,10 @@
     font-family: "Roboto", serif;
 }
 
+html, body {
+    margin: 0;
+}  
+
 .main-info, .footer {
     background-color: #1f2937;
     color: white;
