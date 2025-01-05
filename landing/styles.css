@@ -96,5 +96,34 @@ body {
     height: 40px;
     border: none;
     border-radius: 10px;
-    
+}
+
+.middle-images .title {
+  display: flex;
+  justify-content: center;
+  font-size: 36px;
+  color: #1f2937;
+  font-weight: 900;
+}
+
+.middle-images .images-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.middle-images .images-container .img {
+  border: 1px solid #3882f6;
+  width: 160px;
+  height: 160px;
+  border-radius: 20px;
+  border-width: 3px;
+}
+
+.middle-images .images-container .text {
+  width: 160px;
+  height: 160px;
+  text-align: center;
+  font-size: 18px;
+  color: #4b5563;
 }
