@@ -186,3 +186,9 @@ body {
   justify-content: center;
   margin: 100px;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
