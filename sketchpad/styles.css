@@ -8,3 +8,9 @@
 .row {
     display: flex;
 }
+
+#main-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
