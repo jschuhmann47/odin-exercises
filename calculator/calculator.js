@@ -49,7 +49,13 @@ function pressKey(symbol) {
         }
     }
     else {
-        operator = symbol.toString();
+        if (secondOperand === '') {
+            operator = symbol.toString();
+        }
+        else {
+            operate();
+            operator = symbol.toString();
+        }
     }
     updateInput();
 }
