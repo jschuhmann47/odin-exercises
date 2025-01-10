@@ -25,11 +25,11 @@
             <button class="number-btn" onclick="pressKey(0)">0</button>
         </div>
         <div>
-            <button class="symbol-btn">+</button>
-            <button class="symbol-btn">-</button>
-            <button class="symbol-btn">x</button>
-            <button class="symbol-btn">÷</button>
-            <button class="symbol-btn">=</button>
+            <button class="symbol-btn" onclick="pressKey('+')">+</button>
+            <button class="symbol-btn" onclick="pressKey('-')">-</button>
+            <button class="symbol-btn" onclick="pressKey('*')">x</button>
+            <button class="symbol-btn" onclick="pressKey('/')">÷</button>
+            <button class="symbol-btn" onclick="operate()">=</button>
             <button class="symbol-btn" onclick="clearInput()">C</button>
         </div>
     </div>

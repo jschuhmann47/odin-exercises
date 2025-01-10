@@ -16,25 +16,42 @@ function divide(n1, n2) {
     }
     return n1 / n2;
 }
-function operate(n1, n2, operator) {
+function operate() {
+    var n1 = parseInt(firstOperand);
+    var n2 = parseInt(secondOperand);
+    var result;
     switch (operator) {
         case '+':
-            return add(n1, n2);
+            result = add(n1, n2);
+            break;
         case '-':
-            return subtract(n1, n2);
+            result = subtract(n1, n2);
+            break;
         case '*':
-            return multiply(n1, n2);
+            result = multiply(n1, n2);
+            break;
         case '/':
-            return divide(n1, n2);
+            result = divide(n1, n2);
+            break;
+        default:
+            throw new Error("invalid operator");
     }
-    throw new Error("invalid operator");
+    setInput(result.toString());
+    resetOperands(result);
 }
 function pressKey(symbol) {
-    var input = document.getElementById("input");
-    firstOperand += symbol;
-    if (input !== null) {
-        input.textContent = firstOperand + operator + secondOperand;
+    if (!isOperator(symbol)) {
+        if (operator === '') {
+            firstOperand += symbol;
+        }
+        else {
+            secondOperand += symbol;
+        }
     }
+    else {
+        operator = symbol.toString();
+    }
+    updateInput();
 }
 function pressOperand(operation) {
     operator = operation;
@@ -42,6 +59,30 @@ function pressOperand(operation) {
 function clearInput() {
     var input = document.getElementById("input");
     if (input !== null) {
+        firstOperand = '';
+        operator = '';
+        secondOperand = '';
         input.textContent = '';
     }
+}
+function updateInput() {
+    var input = document.getElementById("input");
+    if (input !== null) {
+        input.textContent = firstOperand + operator + secondOperand;
+    }
+}
+function setInput(result) {
+    var input = document.getElementById("input");
+    if (input !== null) {
+        input.textContent = result;
+    }
+}
+function resetOperands(result) {
+    firstOperand = result.toString();
+    secondOperand = '';
+    operator = '';
+    updateInput();
+}
+function isOperator(symbol) {
+    return ['+', '-', '*', '/'].some(function (v) { return symbol === v; });
 }
