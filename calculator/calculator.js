@@ -39,7 +39,7 @@ function pressKey(symbol) {
 function pressOperand(operation) {
     operator = operation;
 }
-function clear() {
+function clearInput() {
     var input = document.getElementById("input");
     if (input !== null) {
         input.textContent = '';

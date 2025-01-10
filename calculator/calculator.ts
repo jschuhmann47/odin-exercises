@@ -44,7 +44,7 @@ function pressOperand(operation: string) {
     operator = operation
 }
 
-function clear(){
+function clearInput(){
     const input = document.getElementById("input")
     if (input !== null) {
         input.textContent = ''
