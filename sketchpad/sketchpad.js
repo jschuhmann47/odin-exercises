@@ -15,6 +15,7 @@ function newGrid() {
 }
 
 function generateSquares(rows){
+    const color = randomHSLA()
     for (let i = 0; i < rows; i++) {
         const newRow = document.createElement("div")
         newRow.classList.add("row")
@@ -23,10 +24,14 @@ function generateSquares(rows){
             const newSquare = document.createElement("div")
             newSquare.classList.add("square")
             newSquare.addEventListener('mouseover', function (event) {
-                newSquare.style.backgroundColor = "purple"
+                newSquare.style.backgroundColor = color
             })
             newRow.appendChild(newSquare)
         }
         mainGrid.appendChild(newRow)
     }
+}
+
+function randomHSLA() {
+    return `hsla(${~~(360 * Math.random())}, 70%,  72%, 0.8)`;
 }
