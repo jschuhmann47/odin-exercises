@@ -12,13 +12,16 @@ function multiply(n1, n2) {
 }
 function divide(n1, n2) {
     if (n2 == 0) {
-        throw new Error("cannot divide by zero");
+        throw new Error("Cannot divide by zero!");
     }
     return n1 / n2;
 }
 function operate() {
-    var n1 = parseInt(firstOperand);
-    var n2 = parseInt(secondOperand);
+    if (firstOperand == '' || secondOperand == '' || operator == '') {
+        return;
+    }
+    var n1 = parseFloat(firstOperand);
+    var n2 = parseFloat(secondOperand);
     var result;
     switch (operator) {
         case '+':
@@ -31,13 +34,20 @@ function operate() {
             result = multiply(n1, n2);
             break;
         case '/':
-            result = divide(n1, n2);
-            break;
+            try {
+                result = divide(n1, n2);
+                break;
+            }
+            catch (error) {
+                alert(error.message);
+                return;
+            }
         default:
             throw new Error("invalid operator");
     }
-    setInput(result.toString());
-    resetOperands(result);
+    var trimmedResult = isInteger(result) ? result.toString() : result.toFixed(8);
+    setInput(trimmedResult);
+    resetOperands(trimmedResult);
 }
 function pressKey(symbol) {
     if (!isOperator(symbol)) {
@@ -84,11 +94,14 @@ function setInput(result) {
     }
 }
 function resetOperands(result) {
-    firstOperand = result.toString();
+    firstOperand = result;
     secondOperand = '';
     operator = '';
     updateInput();
 }
 function isOperator(symbol) {
     return ['+', '-', '*', '/'].some(function (v) { return symbol === v; });
+}
+function isInteger(n) {
+    return n % 1 == 0;
 }

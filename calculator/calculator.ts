@@ -13,14 +13,17 @@ function multiply(n1: number, n2: number) {
 }
 function divide(n1: number, n2: number) {
     if (n2 == 0) {
-        throw new Error("cannot divide by zero")
+        throw new Error("Cannot divide by zero!")
     }
     return n1 / n2
 }
 
 function operate() {
-    let n1 = parseInt(firstOperand)
-    let n2 = parseInt(secondOperand)
+    if (firstOperand == '' || secondOperand == '' || operator == '') {
+        return
+    }
+    let n1 = parseFloat(firstOperand)
+    let n2 = parseFloat(secondOperand)
     let result: number
     switch (operator) {
         case '+':
@@ -33,13 +36,19 @@ function operate() {
             result = multiply(n1, n2)
             break
         case '/':
-            result = divide(n1, n2)
-            break
+            try {
+                result = divide(n1, n2)
+                break
+            } catch (error: any) {
+                alert(error.message)
+                return
+            }
         default:
             throw new Error("invalid operator")
     }
-    setInput(result.toString())
-    resetOperands(result)
+    const trimmedResult = isInteger(result) ? result.toString() : result.toFixed(8)
+    setInput(trimmedResult)
+    resetOperands(trimmedResult)
 }
 
 
@@ -91,8 +100,8 @@ function setInput(result: string){
     }
 }
 
-function resetOperands(result: number){
-    firstOperand = result.toString()
+function resetOperands(result: string){
+    firstOperand = result
     secondOperand = ''
     operator = ''
     updateInput()
@@ -100,4 +109,8 @@ function resetOperands(result: number){
 
 function isOperator(symbol: number | string) {
     return ['+','-','*','/'].some((v) => symbol === v)
+}
+
+function isInteger(n: number){
+    return n % 1 == 0
 }
