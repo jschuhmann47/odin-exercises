@@ -7,21 +7,21 @@ body {
 }
 
 #calculator {
-    background-color: darkgray;
+    background-color: #1b1a1f;
     width: 600px;
     height: 700px;
     margin: auto;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .input-box {
     height: 100px;
-    background-color: rgb(0, 0, 0);
+    background-color: #30323e;
     display: flex;
     justify-content: end;
     align-items: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 #input {
@@ -31,7 +31,7 @@ body {
 }
 
 .logo-text {
-    background-color: rgb(14, 25, 73);
+    background-color: #314381;
     color: white;
     margin: 0;
     text-align: right;
@@ -43,32 +43,41 @@ body {
 .number-btn, .symbol-btn {
     width: 80px;
     height: 80px;
-    border-radius: 2px;
+    border-radius: 25px;
     border: 0;
     flex: 1;
     font-size: 24px;
 }
 
 .number-btn {
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: #22222a;
 }
 
 .row {
     display: flex;
     justify-content: center;
-    gap: 2px;
+    gap: 5px;
 }
 
 .symbol-btn {
-    background-color: antiquewhite;
-    color: black;
+    background-color: #414659;
+    color: white;
 }
 
 .main-buttons {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 5px;
     margin: 30px;
 }
 
+.equal-btn {
+    background-color: #314381;
+    color: #d8e3ff;
+}
+
+.clear-btn {
+    background-color: #61395e;
+    color: #fcd2f6;
+}

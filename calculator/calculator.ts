@@ -60,23 +60,24 @@ function pressKey(symbol: number | string) {
         }
     } else {
         if (secondOperand === "") {
-            updateOperator(firstOperand, symbol, () => {});
+            // maybe save global state as object instead of doing this
+            updateOperator((newValue) => firstOperand += newValue, symbol, () => {});
         } else {
-            updateOperator(secondOperand, symbol, operate);
+            updateOperator((newValue) => secondOperand += newValue, symbol, operate);
         }
     }
     updateInputOnScreen();
 }
 
 function updateOperator(
-    symbol: string,
-    operand: number | string,
-    updateFn: () => void
+    updateOperandFn: (newValue: string) => void,
+    symbol: number | string,
+    updateResultFn: () => void
 ) {
     if (symbol === ".") {
-        operand += symbol;
+        updateOperandFn(symbol);
     } else {
-        updateFn();
+        updateResultFn();
         operator = symbol.toString();
     }
 }

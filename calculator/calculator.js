@@ -60,20 +60,21 @@ function pressKey(symbol) {
     }
     else {
         if (secondOperand === "") {
-            updateOperator(firstOperand, symbol, function () { });
+            // maybe save global state as object instead of doing this
+            updateOperator(function (newValue) { return firstOperand += newValue; }, symbol, function () { });
         }
         else {
-            updateOperator(secondOperand, symbol, operate);
+            updateOperator(function (newValue) { return secondOperand += newValue; }, symbol, operate);
         }
     }
     updateInputOnScreen();
 }
-function updateOperator(symbol, operand, updateFn) {
+function updateOperator(updateOperandFn, symbol, updateResultFn) {
     if (symbol === ".") {
-        operand += symbol;
+        updateOperandFn(symbol);
     }
     else {
-        updateFn();
+        updateResultFn();
         operator = symbol.toString();
     }
 }
