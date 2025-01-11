@@ -60,10 +60,18 @@ function pressKey(symbol: number | string) {
         }
     } else {
         if (secondOperand === "") {
-            // maybe save global state as object instead of doing this
-            updateOperator((newValue) => firstOperand += newValue, symbol, () => {});
+            // maybe save global state as object instead of doing this fn stuff
+            updateOperator(
+                (newValue) => (firstOperand += newValue),
+                symbol,
+                () => {}
+            );
         } else {
-            updateOperator((newValue) => secondOperand += newValue, symbol, operate);
+            updateOperator(
+                (newValue) => (secondOperand += newValue),
+                symbol,
+                operate
+            );
         }
     }
     updateInputOnScreen();

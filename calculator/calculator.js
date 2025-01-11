@@ -60,7 +60,7 @@ function pressKey(symbol) {
     }
     else {
         if (secondOperand === "") {
-            // maybe save global state as object instead of doing this
+            // maybe save global state as object instead of doing this fn stuff
             updateOperator(function (newValue) { return firstOperand += newValue; }, symbol, function () { });
         }
         else {
