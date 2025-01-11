@@ -78,7 +78,7 @@ function clearInput() {
         firstOperand = '';
         operator = '';
         secondOperand = '';
-        input.textContent = '';
+        input.textContent = '0';
     }
 }
 function updateInput() {

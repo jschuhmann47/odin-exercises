@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <script src="./calculator.js"></script>
-    <title>Calculator</title>
-</head>
-<body>
-    <div>
-        <div>
-            <p id="input"></p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles.css" />
+        <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+        <script src="./calculator.js"></script>
+        <title>RetroCalc</title>
+    </head>
+    <body>
+        <div id="calculator">
+            <div class="input-box">
+                <p id="input">0</p>
+            </div>
+            <div class="logo">
+                <p class="logo-text">RetroCalc</p>
+            </div>
+            <div class="main-buttons">
+                <div class="row">
+                    <button class="symbol-btn" onclick="clearInput()">C</button>
+                    <button class="symbol-btn" onclick="pressKey('/')">
+                        ÷
+                    </button>
+                </div>
+                <div class="row">
+                    <button class="number-btn" onclick="pressKey(7)">7</button>
+                    <button class="number-btn" onclick="pressKey(8)">8</button>
+                    <button class="number-btn" onclick="pressKey(9)">9</button>
+                    <button class="symbol-btn" onclick="pressKey('*')">
+                        x
+                    </button>
+                </div>
+                <div class="row">
+                    <button class="number-btn" onclick="pressKey(4)">4</button>
+                    <button class="number-btn" onclick="pressKey(5)">5</button>
+                    <button class="number-btn" onclick="pressKey(6)">6</button>
+                    <button class="symbol-btn" onclick="pressKey('-')">
+                        -
+                    </button>
+                </div>
+                <div class="row">
+                    <button class="number-btn" onclick="pressKey(1)">1</button>
+                    <button class="number-btn" onclick="pressKey(2)">2</button>
+                    <button class="number-btn" onclick="pressKey(3)">3</button>
+                    <button class="symbol-btn" onclick="pressKey('+')">
+                        +
+                    </button>
+                </div>
+                <div class="row">
+                    <button class="number-btn" onclick="pressKey(0)">0</button>
+                    <button class="symbol-btn equal-btn" onclick="operate()">
+                        =
+                    </button>
+                </div>
+            </div>
         </div>
-        <div>
-            <button class="number-btn" onclick="pressKey(1)">1</button>
-            <button class="number-btn" onclick="pressKey(2)">2</button>
-            <button class="number-btn" onclick="pressKey(3)">3</button>
-            <button class="number-btn" onclick="pressKey(4)">4</button>
-            <button class="number-btn" onclick="pressKey(5)">5</button>
-            <button class="number-btn" onclick="pressKey(6)">6</button>
-            <button class="number-btn" onclick="pressKey(7)">7</button>
-            <button class="number-btn" onclick="pressKey(8)">8</button>
-            <button class="number-btn" onclick="pressKey(9)">9</button>
-            <button class="number-btn" onclick="pressKey(0)">0</button>
-        </div>
-        <div>
-            <button class="symbol-btn" onclick="pressKey('+')">+</button>
-            <button class="symbol-btn" onclick="pressKey('-')">-</button>
-            <button class="symbol-btn" onclick="pressKey('*')">x</button>
-            <button class="symbol-btn" onclick="pressKey('/')">÷</button>
-            <button class="symbol-btn" onclick="operate()">=</button>
-            <button class="symbol-btn" onclick="clearInput()">C</button>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
