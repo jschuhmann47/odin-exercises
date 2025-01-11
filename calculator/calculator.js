@@ -1,6 +1,6 @@
 "use strict";
-var firstOperand = '', secondOperand = '';
-var operator = '';
+var firstOperand = "", secondOperand = "";
+var operator = "";
 function add(n1, n2) {
     return n1 + n2;
 }
@@ -17,23 +17,23 @@ function divide(n1, n2) {
     return n1 / n2;
 }
 function operate() {
-    if (firstOperand == '' || secondOperand == '' || operator == '') {
+    if (firstOperand == "" || secondOperand == "" || operator == "") {
         return;
     }
     var n1 = parseFloat(firstOperand);
     var n2 = parseFloat(secondOperand);
     var result;
     switch (operator) {
-        case '+':
+        case "+":
             result = add(n1, n2);
             break;
-        case '-':
+        case "-":
             result = subtract(n1, n2);
             break;
-        case '*':
+        case "*":
             result = multiply(n1, n2);
             break;
-        case '/':
+        case "/":
             try {
                 result = divide(n1, n2);
                 break;
@@ -45,13 +45,15 @@ function operate() {
         default:
             throw new Error("invalid operator");
     }
-    var trimmedResult = isInteger(result) ? result.toString() : result.toFixed(8);
+    var trimmedResult = isInteger(result)
+        ? result.toString()
+        : result.toFixed(8);
     setInput(trimmedResult);
     resetOperands(trimmedResult);
 }
 function pressKey(symbol) {
     if (!isOperator(symbol)) {
-        if (operator === '') {
+        if (operator === "") {
             firstOperand += symbol;
         }
         else {
@@ -59,7 +61,7 @@ function pressKey(symbol) {
         }
     }
     else {
-        if (secondOperand === '') {
+        if (secondOperand === "") {
             operator = symbol.toString();
         }
         else {
@@ -75,10 +77,10 @@ function pressOperand(operation) {
 function clearInput() {
     var input = document.getElementById("input");
     if (input !== null) {
-        firstOperand = '';
-        operator = '';
-        secondOperand = '';
-        input.textContent = '0';
+        firstOperand = "";
+        operator = "";
+        secondOperand = "";
+        input.textContent = "0";
     }
 }
 function updateInput() {
@@ -95,12 +97,12 @@ function setInput(result) {
 }
 function resetOperands(result) {
     firstOperand = result;
-    secondOperand = '';
-    operator = '';
+    secondOperand = "";
+    operator = "";
     updateInput();
 }
 function isOperator(symbol) {
-    return ['+', '-', '*', '/'].some(function (v) { return symbol === v; });
+    return ["+", "-", "*", "/"].some(function (v) { return symbol === v; });
 }
 function isInteger(n) {
     return n % 1 == 0;
