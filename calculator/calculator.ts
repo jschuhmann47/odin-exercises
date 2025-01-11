@@ -46,9 +46,7 @@ function operate() {
         default:
             throw new Error("invalid operator");
     }
-    const trimmedResult = isInteger(result)
-        ? result.toString()
-        : result.toFixed(8);
+    const trimmedResult = removeTrailingZeroes(result).toString();
     setInput(trimmedResult);
     resetOperands(trimmedResult);
 }
@@ -62,54 +60,70 @@ function pressKey(symbol: number | string) {
         }
     } else {
         if (secondOperand === "") {
-            operator = symbol.toString();
+            updateOperator(firstOperand, symbol, () => {});
         } else {
-            operate();
-            operator = symbol.toString();
+            updateOperator(secondOperand, symbol, operate);
         }
     }
-    updateInput();
+    updateInputOnScreen();
 }
 
-function pressOperand(operation: string) {
-    operator = operation;
+function updateOperator(
+    symbol: string,
+    operand: number | string,
+    updateFn: () => void
+) {
+    if (symbol === ".") {
+        operand += symbol;
+    } else {
+        updateFn();
+        operator = symbol.toString();
+    }
 }
 
 function clearInput() {
-    const input = document.getElementById("input");
-    if (input !== null) {
+    updateInputFn((input) => {
         firstOperand = "";
         operator = "";
         secondOperand = "";
         input.textContent = "0";
-    }
+    });
 }
 
-function updateInput() {
-    const input = document.getElementById("input");
-    if (input !== null) {
+function updateInputOnScreen() {
+    updateInputFn((input) => {
         input.textContent = firstOperand + operator + secondOperand;
-    }
+    });
 }
 
 function setInput(result: string) {
-    const input = document.getElementById("input");
-    if (input !== null) {
+    updateInputFn((input) => {
         input.textContent = result;
-    }
+    });
 }
 
 function resetOperands(result: string) {
     firstOperand = result;
     secondOperand = "";
     operator = "";
-    updateInput();
+    updateInputOnScreen();
 }
 
 function isOperator(symbol: number | string) {
-    return ["+", "-", "*", "/"].some((v) => symbol === v);
+    return ["+", "-", "*", "/", "."].some((v) => symbol === v);
 }
 
 function isInteger(n: number) {
     return n % 1 == 0;
+}
+
+function removeTrailingZeroes(n: number, decimals = 8) {
+    return parseFloat(n.toFixed(decimals));
+}
+
+function updateInputFn(fn: (input: HTMLElement) => void) {
+    const input = document.getElementById("input");
+    if (input !== null) {
+        fn(input);
+    }
 }

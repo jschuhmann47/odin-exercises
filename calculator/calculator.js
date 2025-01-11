@@ -45,9 +45,7 @@ function operate() {
         default:
             throw new Error("invalid operator");
     }
-    var trimmedResult = isInteger(result)
-        ? result.toString()
-        : result.toFixed(8);
+    var trimmedResult = removeTrailingZeroes(result).toString();
     setInput(trimmedResult);
     resetOperands(trimmedResult);
 }
@@ -62,48 +60,60 @@ function pressKey(symbol) {
     }
     else {
         if (secondOperand === "") {
-            operator = symbol.toString();
+            updateOperator(firstOperand, symbol, function () { });
         }
         else {
-            operate();
-            operator = symbol.toString();
+            updateOperator(secondOperand, symbol, operate);
         }
     }
-    updateInput();
+    updateInputOnScreen();
 }
-function pressOperand(operation) {
-    operator = operation;
+function updateOperator(symbol, operand, updateFn) {
+    if (symbol === ".") {
+        operand += symbol;
+    }
+    else {
+        updateFn();
+        operator = symbol.toString();
+    }
 }
 function clearInput() {
-    var input = document.getElementById("input");
-    if (input !== null) {
+    updateInputFn(function (input) {
         firstOperand = "";
         operator = "";
         secondOperand = "";
         input.textContent = "0";
-    }
+    });
 }
-function updateInput() {
-    var input = document.getElementById("input");
-    if (input !== null) {
+function updateInputOnScreen() {
+    updateInputFn(function (input) {
         input.textContent = firstOperand + operator + secondOperand;
-    }
+    });
 }
 function setInput(result) {
-    var input = document.getElementById("input");
-    if (input !== null) {
+    updateInputFn(function (input) {
         input.textContent = result;
-    }
+    });
 }
 function resetOperands(result) {
     firstOperand = result;
     secondOperand = "";
     operator = "";
-    updateInput();
+    updateInputOnScreen();
 }
 function isOperator(symbol) {
-    return ["+", "-", "*", "/"].some(function (v) { return symbol === v; });
+    return ["+", "-", "*", "/", "."].some(function (v) { return symbol === v; });
 }
 function isInteger(n) {
     return n % 1 == 0;
+}
+function removeTrailingZeroes(n, decimals) {
+    if (decimals === void 0) { decimals = 8; }
+    return parseFloat(n.toFixed(decimals));
+}
+function updateInputFn(fn) {
+    var input = document.getElementById("input");
+    if (input !== null) {
+        fn(input);
+    }
 }

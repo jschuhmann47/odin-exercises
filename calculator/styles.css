@@ -2,6 +2,10 @@
     font-family: monospace;
 }
 
+body {
+    background-color: #23272e;
+}
+
 #calculator {
     background-color: darkgray;
     width: 600px;
